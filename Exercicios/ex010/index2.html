@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Identificação</title>
+</head>
+<body>
+    <h1>Identificação de Nacionalidade</h1>
+    <label for="txtid">Digite o nome do seu pais de origem: </label>
+    <input type="text" name="txtid" id="txtid" placeholder="País">
+    <input type="submit" value="Enviar" onclick="nacionalidade()">
+    <div id="res">
+    </div>
+
+    <script>
+        function nacionalidade() {
+            var pais = document.querySelector('input#txtid')
+            var res = document.getElementById('res')
+            var nac = String(pais.value)
+            res.innerHTML = `<p>Vivendo em <strong>${nac}</strong></p>`
+            if (nac == 'Brasil') {
+                res.innerHTML += '<p>Você é <strong>Brasileiro</strong>!</p>'
+            } else {
+                res.innerHTML += '<p>Você é <strong>Estrangeiro</strong>!</p>'
+            }
+        }
+    </script>
+</body>
+</html>
