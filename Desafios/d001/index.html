@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensagens</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        input {
+            padding: 20px;
+            border: 1px solid lightgray;
+        }
+
+        input:hover {
+            background-color: lightgray;
+        }
+    </style>
+</head>
+<body>
+    <h1>Desafio das Mensagens</h1>
+    <input class="bt" type="button" value="Botão 1" onclick="clicar(1)">
+    <input class="bt" type="button" value="Botão 2" onclick="clicar(2)">
+    <input class="bt" type="button" value="Botão 3" onclick="clicar(3)">
+
+    <script>
+        function clicar(n) {
+            if (n == 1) {
+                alert('Você clicou no 1º botão!')
+            } else if (n == 2) {
+                alert('Você clicou no 2º botão!')
+            } else if (n == 3) {
+                alert('Você clicou no 3º botão!')
+            }         
+        }
+    </script>
+</body>
+</html>
