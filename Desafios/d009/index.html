@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reajuster salário</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        input {
+            padding: 20px;
+            color: black;
+            border: 1px solid rgb(180, 180, 180);
+            cursor: pointer;
+        }
+
+        input:hover {
+            background-color: lightgray;
+        }
+
+        p {
+            font-size: 10pt;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Reajuste salarial</h1>
+    <input type="button" value="Reajustar Salário" onclick="clicar()">
+    <p id='res'>Clique no botão acima para inicar.</p>
+
+    <script>
+        function clicar() {
+            var nome = window.prompt('Qual é o nome do funcionário?')
+            var sal = Number(window.prompt(`Qual é o salário de ${nome}?`))
+            var reaj = Number(window.prompt(`O salário de ${nome} vai ser reajustado em qual porcentagem?`))
+            var reajt = Number(sal*(reaj/100))
+            var salt = Number(sal*((100+reaj)/100))
+            var salatf = sal.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})
+            var reajtf = reajt.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})
+            var saltf = salt.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})
+            var res = document.getElementById('res')
+            res.innerHTML = `<h2>${nome} recebeu um aumento salarial!</h2>
+            <p>O salário atual era ${salatf}.</p>
+            <p>Com um aumento de ${reaj}%, o salário vai aumentar ${reajtf} no próximo mês.</p>
+            <p>E a partir daí, ${nome} vai passar a ganhar ${saltf}.</p>`
+        }
+    </script>
+</body>
+</html>
