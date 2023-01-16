@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo de Desconto</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        input {
+            padding: 20px;
+            color: black;
+            border: 1px solid rgb(180, 180, 180);
+            cursor: pointer;
+        }
+
+        input:hover {
+            background-color: lightgray;
+        }
+
+        p {
+            font-size: 10pt;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calcular Desconto</h1>
+    <input type="button" value="Desconto de 10%" onclick="clicar()">
+    <p id="res">Clique no botão acima para iniciar.</p>
+
+    <script>
+        function clicar() {
+            var prod = window.prompt('Qual é o produto que você está comprando?')
+            var p = Number(window.prompt(`Qual o preço de ${prod}?`))
+            var t = Number(p*0.9)
+            var d = Number(p*0.1)
+            var pf = p.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})
+            var pft = t.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})
+            var pfd = d.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})
+            var res = document.getElementById('res')
+            res.innerHTML = `<h2>Calculando desconto de 10% para ${prod}</h2>
+            <p>O preço original era ${pf}.</p>
+            <p>Você acaba de ganhar ${pfd} de desconto (-10%).</p>
+            <p>No fim, você vai pagar ${pft} no produto ${prod}.</p>`
+        }
+    </script>
+</body>
+</html>
