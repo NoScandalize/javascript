@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Situação do aluno</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        input {
+            padding: 20px;
+            color: black;
+            border: 1px solid rgb(180, 180, 180);
+            cursor: pointer;
+        }
+
+        input:hover {
+            background-color: lightgray;
+        }
+
+        p {
+            font-size: 10pt;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Situação do aluno</h1>
+    <input type="button" value="Entrar com as notas" onclick="clicar()">
+    <p id="res">Clique no botão acima para informar as notas do aluno.</p>
+
+    <script>
+        function clicar() {
+            var studentName = window.prompt('Qual é o nome do aluno?')
+            var firstGrade = Number(window.prompt(`Primeira nota de ${studentName}:`))
+            var secondGrade = Number(window.prompt(`Segunda nota de ${studentName}:`))
+            var studentAverage = Number((firstGrade+secondGrade) / 2)
+            var resultParagraph = document.getElementById('res')
+
+            if (studentAverage < 3) {
+                resultParagraph.innerHTML = `<h2>Analisando a situação de ${studentName}</h2>
+                <p>Com as notas ${firstGrade.toFixed(1).replace('.',",")} e ${secondGrade.toFixed(1).replace('.',",")}, a <strong>média é ${studentAverage.toFixed(2).replace('.',",")}</strong></p>
+                <p>Com média abaixo de 3,0, o aluno está <strong style="background-color: #E28783; color: #861F13;">REPROVADO</strong></p>`
+
+            } else if (studentAverage >= 3 && studentAverage <= 6) {
+                resultParagraph.innerHTML = `<h2>Analisando a situação de ${studentName}</h2>
+                <p>Com as notas ${firstGrade.toFixed(1).replace('.',",")} e ${secondGrade.toFixed(1).replace('.',",")}, a <strong>média é ${studentAverage.toFixed(2).replace('.',",")}</strong></p>
+                <p>Com média entre 3,0 e 6,0, o aluno está em <strong style="background-color: #FFFFE3; color: #C3884B;">RECUPERAÇÃO</strong></p>`
+
+            } else {
+                resultParagraph.innerHTML = `<h2>Analisando a situação de ${studentName}</h2>
+                <p>Com as notas ${firstGrade.toFixed(1).replace('.',",")} e ${secondGrade.toFixed(1).replace('.',",")}, a <strong>média é ${studentAverage.toFixed(2).replace('.',",")}</strong></p>
+                <p>Com média acima de 6,0, o aluno está <strong style="background-color: #A6EB9A; color: #387E22;">APROVADO</strong></p>`
+                
+            }
+        }
+    </script>
+</body>
+</html>
