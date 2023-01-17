@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preço mudou</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        input {
+            padding: 20px;
+            color: black;
+            border: 1px solid rgb(180, 180, 180);
+            cursor: pointer;
+        }
+
+        input:hover {
+            background-color: lightgray;
+        }
+
+        p {
+            font-size: 10pt;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Preço mudou</h1>
+    <input type="button" value="Verificar" onclick="clicar()">
+    <p id="res">Clique no botão acima para analisar a mudança de preço.</p>
+
+    <script>
+        function clicar() {
+            var previousPrice = Number(window.prompt('Qual era o preço anterior do produto?'))
+            var currentPrice = Number(window.prompt('Qual é o preço atual do produto?'))
+            var variationPrice = Number(currentPrice - previousPrice)
+            var previousPriceFormatted = previousPrice.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})
+            var currentPriceFormatted = currentPrice.toLocaleString('pt-BR', {style:'currency', currency: 'BRL'})
+            var variationPriceFormatted = variationPrice.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})
+            var resultParagraph = document.getElementById('res')
+
+            if (variationPrice > 0) {
+                let percentageVariation = Number(((currentPrice/previousPrice) - 1) * 100)
+
+                resultParagraph.innerHTML = `<h2>Analisando os valores informados</h2>
+                <p>O produto custava ${previousPriceFormatted} e agora custa ${currentPriceFormatted}.</p>
+                <p>Hoje o produto está mais caro.</p>
+                <p>O preço subiu ${variationPriceFormatted} em relação ao preço anterior.</p>
+                <p>Uma variação de ${percentageVariation.toFixed(2)}% pra cima.</p>`
+            } else {
+                let percentageVariation = Number(((previousPrice/currentPrice) - 1) * 100)
+                let variationPriceAdjusted = variationPrice * (-1)
+                let variationPriceFormattedAdjusted = variationPriceAdjusted.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})
+
+                resultParagraph.innerHTML = `<h2>Analisando os valores informados</h2>
+                <p>O produto custava ${previousPriceFormatted} e agora custa ${currentPriceFormatted}.</p>
+                <p>Hoje o produto está mais barato.</p>
+                <p>O preço caiu ${variationPriceFormattedAdjusted} em relação ao preço anterior.</p>
+                <p>Uma variação de ${percentageVariation.toFixed(2)}% pra baixo.</p>`
+            }
+        }
+    </script>
+</body>
+</html>
